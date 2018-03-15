@@ -3,7 +3,7 @@
 File Name : calc_diag_obs_cdo.py
 Author: Ruth Lorenz (ruth.lorenz@env.ethz.ch)
 Created: 18-01-2017
-Modified: Wed 22 Nov 2017 06:34:49 PM CET
+Modified: Thu 15 Mar 2018 06:05:28 PM CET
 Purpose: calculate diagnostic from obs and save for further use
 
 '''
@@ -18,19 +18,18 @@ import glob
 ###
 # Define input
 ###
-#varnames = ['tas', 'tasmax', 'tasmin', 'pr', 'rlus', 'rsds', 'rnet',
-#            'huss', 'psl', 'hfls']
-varnames = ['hurs']
+varnames = ['tasmax', 'pr', 'rlus', 'rsds', 'rnet',
+            'huss', 'psl', 'hfls']
 var_kind = 'seas'    #kind is ann: annual, mon: monthly, seas: seasonal
-seasons = ['JJA', 'MAM', 'SON', 'DJF']           # choose data for particular month or season?
-region = ['EUR', 'CNEU']           # cut data over region?
-obs = ['Obs']  # 'ERAint', 'MERRA2', 'Obs'
+seasons = ['JJA']           # choose data for particular month or season?
+region = ['NAM', 'CNA']           # cut data over region?
+obs = ['ERAint', 'MERRA2']  # 'ERAint', 'MERRA2', 'Obs'
 
 syear = 1980
 eyear = 2014
 nyears = eyear - syear + 1
 grid = 'g025'
-masko = False
+masko = True
 
 pathtrop = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/'
 

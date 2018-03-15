@@ -3,7 +3,7 @@
 File Name : calc_perfmetric_for_weight_beyond_democracy_cdo.py
 Author: Ruth Lorenz (ruth.lorenz@env.ethz.ch)
 Created: 07-02-2017
-Modified: Mon 27 Nov 2017 09:37:33 AM CET
+Modified: Thu 15 Mar 2018 06:07:33 PM CET
 Purpose: Script calculating rmse for further use in
          weight_mm_beyond_democracy_cmip5-ng_cdo.py,
 	 diagnostics precalculated using cdo in
@@ -32,18 +32,18 @@ from func_write_netcdf import func_write_netcdf
 ###
 ## calculate variables separately,
 ## weighting can then be done based on multiple variables
-diag_var = ['clt', 'clt', 'clt']
+diag_var = ['tasmax', 'tasmax', 'tasmax']
 ## climatology:clim, variability:std, trend:trnd
-var_file = ['CLIM', 'STD', 'TREND'] #'CLIM', 'STD', 'TREND'
+var_file = ['CLIM', 'STD', 'TREND']
 ## kind is cyc: annual cycle, mon: monthly means, seas: seasonal means
-var_kind = ['seas', 'seas', 'seas']#, 'seas', 'seas'
+var_kind = ['seas', 'seas', 'seas']
 ## res_name is annual (ANN) or seasonal name (DJF, MAM, JJA, SON)
-res_name = ['JJA', 'JJA', 'JJA'] #, 'JJA', 'JJA'
-res_time = ['MEAN', 'MEAN', 'MEAN'] #MEAN, MAX
-masko = ['maskF', 'maskF', 'maskF']
+res_name = ['JJA', 'JJA', 'JJA']
+res_time = ['MEAN', 'MEAN', 'MEAN']
+masko = ['maskT', 'maskT', 'maskT']
 ## cut data over region?        
-region = 'CNEU'
-obslist = ['Obs'] #'ERAint', 'MERRA2', 'Obs'
+region = 'NAM'
+obslist = ['ERAint', 'MERRA2', 'Obs']
 if region:
     area = region
 else:
@@ -55,7 +55,7 @@ archive = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/'
 outdir = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/%s/%s/' %(
     diag_var[0], freq)
 
-syear = 2000
+syear = 1980
 eyear = 2014
 nyears = eyear - syear + 1
 

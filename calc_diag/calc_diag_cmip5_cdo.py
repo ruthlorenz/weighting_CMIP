@@ -3,7 +3,7 @@
 File Name : calc_diag_cmip5_cdo.py
 Author: Ruth Lorenz (ruth.lorenz@env.ethz.ch)
 Created: 06-01-2017
-Modified: Tue 15 Aug 2017 21:38:23 CEST
+Modified: Thu 15 Mar 2018 06:04:13 PM CET
 Purpose: Script calculating diagnostics from cmip5 data for further use
          e.g. in Mult_Diag_Lin_Reg
 
@@ -20,20 +20,18 @@ import glob
 ###
 # Define input
 ###
-#varnames = ['tas', 'tasmax', 'tasmin', 'pr', 'rlus', 'rsds',
-#            'huss', 'psl', 'hfls']
-#varnames = ['rlus', 'rsds']
-varnames = ['hurs']
+varnames = ['tasmax', 'pr', 'rlus', 'rsds',
+            'huss', 'psl', 'hfls']
 var_kind = 'seas'    #kind is ann: annual, mon: monthly, seas: seasonal
 seasons = ['JJA']      #choose data for particular month or season?
-region = ['CNEU']      #cut data over region?
+region = ['NAM', 'CNA']      #cut data over region?
 syear = 1950
 eyear = 2100
 nyears = eyear - syear + 1
 
 experiment = 'rcp85'
 grid = 'g025'
-masko = False
+masko = True
 
 archive = '/net/atmos/data/cmip5-ng'
 pathtrop = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/'

@@ -17,8 +17,6 @@ import glob as glob
 import os
 import math
 from sklearn import linear_model
-#from sklearn.metrics import r2_score, classification_report
-#from sklearn.svm import SVC
 from sklearn.cross_validation import cross_val_score
 from sklearn.linear_model import (LinearRegression, Ridge, RidgeCV, Lasso,
                                   LassoCV, 
@@ -43,132 +41,28 @@ import operator
 experiment = 'rcp85'
 archive = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/'
 
-#target_var = 'tasmax'
-#target_file = 'CLIM'
-#target_mask = 'maskT'
-#diag_var = ['tasmax', 'pr', 'rlus', 'rsds', 'huss', 'psl', 'tasmax', 'pr', 'rsds', 'hfls', 'huss', 'psl', 'tasmax', 'pr', 'rsds', 'hfls', 'huss', 'psl']
-#var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM','CLIM','CLIM','STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND'] #,'clim'
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA', 'JJA','JJA', 'JJA', 'JJA','JJA', 'JJA','JJA', 'JJA','JJA','JJA']
-#diag_var = ['tasmax', 'pr', 'tasmax', 'pr', 'huss', 'hfls', 'tos', 'tasmax', 'rsds'] ## preselected NAM
-#var_file = ['CLIM', 'CLIM', 'STD', 'STD', 'STD', 'STD', 'STD', 'TREND', 'TREND']#
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA'] #
-#masko = ['maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT']
+target_var = 'tasmax'
+target_file = 'CLIM'
+target_mask = 'maskT'
+
+diag_var = ['tasmax', 'pr', 'tasmax', 'pr', 'huss', 'hfls', 'tos', 'tasmax', 'rsds']
+var_file = ['CLIM', 'CLIM', 'STD', 'STD', 'STD', 'STD', 'STD', 'TREND', 'TREND']#
+res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA'] #
+masko = ['maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT']
 #diag_var = ['tasmax', 'rlus', 'hfls', 'tasmax', 'rlus', 'tos', 'tasmax', 'rlus', 'rsds', 'tos'] ## preselected CNA
 #var_file = ['CLIM', 'CLIM', 'CLIM', 'STD', 'STD', 'STD', 'TREND', 'TREND', 'TREND', 'TREND']#
 #res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA'] #
 #masko = ['maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT', 'maskT', 'maskF']
 
-#diag_var = ['tasmax', 'pr', 'rlus', 'psl', 'tasmax', 'rsds', 'tasclt', 'psl', 'huss', 'tasmax',  'rsds'] # preselected EUR
-#var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM', 'STD', 'STD', 'CORR', 'TREND', 'TREND', 'TREND', 'TREND'] #
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',  'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-#masko = ['maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT']
-
-#diag_var = ['tasmax', 'pr', 'rlus', 'rsds', 'hfls', 'pr', 'psl', 'huss', 'tasmax'] # preselected CNEU
-#var_file = ['CLIM', 'CLIM', 'CLIM',  'STD', 'STD', 'TREND', 'TREND', 'TREND', 'TREND'] #
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA',  'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-
-#diag_var = ['tasmax', 'pr', 'tasmax', 'huss', 'hfls', 'tasmax', 'rsds'] # preselected GLOBAL
-#var_file = ['CLIM', 'CLIM', 'STD', 'STD', 'STD', 'TREND', 'TREND'] #
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-
-# preselected tas SCALE EUR
-#target_var = 'tas'
-#target_file = 'SCALE'
-#target_mask = 'maskT'
-#res_name_target = 'JJA'
-#freq = 'mon'
-
-#diag_var = ['tas',   'rsds',  'ef',    'tas',   'dtr',   'huss',   'tas',   'tos',  'psl',   'ef',    'pr',    'rsds',  'psl',   'pr',    'psl',   'psl',   'huss',  'huss'] #
-#var_file = ['CLIM',  'CLIM',  'CLIM',  'STD',   'STD',   'STD',  'TREND',  'TREND', 'TREND', 'TREND', 'CLIM',  'STD',   'STD',   'TREND', 'TREND', 'CLIM',  'STD',   'STD'] #
-#res_name = ['JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'MAM',   'MAM',   'MAM',   'MAM',   'MAM',   'SON',   'SON',   'DJF']
-#masko =    ['maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT']
-
-#EUR & CNEU
-#target_var = 'TXx'
-#target_file = 'CLIM'
-#target_mask = 'maskT'
-#res_name_target = 'ANN'
-#target_time = 'MAX'
-#freq = 'ann'
-
-#CNEU
-#diag_var = ['TXx',  'TXx',  'TXx',   'rsds',  'tas',   'psl',   'pr',   'rnet',   'psl',   'ef',    'tos',  'tos',   'rnet',  'huss',  'tasclt','tos',  'rnet',  'psl',  'tas'] #
-#var_file = ['STD',  'TREND','CLIM',  'CLIM',  'STD',   'STD',   'TREND', 'TREND', 'TREND', 'TREND', 'CLIM', 'STD',   'STD',   'STD',   'CORR',  'STD',  'STD',   'STD',  'TREND'] #
-#res_name = ['ANN',  'ANN',  'ANN',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'MAM',  'MAM',   'MAM',   'MAM',   'MAM',   'SON',  'SON',   'SON',  'SON']
-#res_time = ['MAX',  'MAX',  'MAX',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',  'MEAN', 'MEAN']
-#masko =    ['maskT','maskT','maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF','maskF', 'maskT', 'maskT', 'maskT', 'maskF','maskT', 'maskT','maskT']
-#freq_v =   ['ann',  'ann',  'ann',   'mon',   'mon',   'mon',   'mon',   'mon',   'mon',   'mon',   'mon',  'mon',   'mon',   'mon',   'mon',   'mon',  'mon',   'mon',  'mon']
-
-#EUR
-#diag_var = ['TXx',   'TXx','tos',   'rnet', 'tos',   'hfls',  'pr',    'rnet', 'ef',   'rnet',  'ef',   'rsds', 'hfls',  'tasclt', 'pr',    'rsds']
-#var_file = ['TREND', 'CLIM', 'CLIM',  'CLIM', 'STD',    'STD',   'TREND', 'TREND','TREND','STD',   'STD',  'TREND','TREND', 'CORR',   'CLIM',  'CLIM']
-#res_name = ['ANN',   'ANN',   'JJA',   'JJA',  'JJA',   'JJA',   'JJA',   'JJA',  'JJA',  'MAM',   'SON',  'SON',  'SON',   'SON',    'DJF',   'DJF']
-#res_time = ['MAX',   'MAX',   'MEAN',  'MEAN', 'MEAN',  'MEAN', 'MEAN',  'MEAN', 'MEAN', 'MEAN',  'MEAN', 'MEAN', 'MEAN',  'MEAN',   'MEAN',  'MEAN']
-#masko =    ['maskT', 'maskT', 'maskF', 'maskT','maskF', 'maskT', 'maskT', 'maskT','maskT','maskT', 'maskT','maskT','maskT', 'maskT',  'maskT', 'maskT']
-#freq_v =   ['ann',   'ann',   'mon',   'mon',  'mon',   'mon',   'mon',   'mon',  'mon',  'mon',   'mon',  'mon',  'mon',   'mon',    'mon',   'mon']
-
-# CNEU clt
-#target_var = 'clt'
-#target_file = 'CLIM'
-#target_mask = 'maskF'
-#res_name_target = 'JJA'
-#target_time = 'MEAN'
-#freq = 'mon'
-
-#diag_var = ['clt', 'tasmax', 'rnet', 'huss', 'ef', 'tos',
-#            'clt', 'tas', 'pr', 'rnet', 'huss', 
-#            'clt', 'tasmax', 'pr', 'rsds', 'huss', 'ef', 'tashuss']
-#var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'CORR']
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-#res_time = ['MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN',
-#            'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN',
-#            'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN']
-#masko =    ['maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF',
-#            'maskF', 'maskT', 'maskT', 'maskT', 'maskT',
-#            'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT'] 
-#freq_v =   ['mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#            'mon', 'mon', 'mon', 'mon', 'mon',
-#            'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon']
-
-# CNEU hurs
-target_var = 'hurs'
-target_file = 'CLIM'
-target_mask = 'maskF'
-res_name_target = 'JJA'
-target_time = 'MEAN'
-freq = 'mon'
-
-diag_var = ['hurs', 'pr', 
-            'hurs', 'tasmax', 'tasmin',
-            'hurs', 'pr', 'psl', 'hfls', 'tasclt', 'tashuss']
-var_file = ['CLIM', 'CLIM', 
-            'STD', 'STD', 'STD',
-            'TREND', 'TREND', 'TREND', 'TREND', 'CORR', 'CORR']
-res_name = ['JJA', 'JJA',
-            'JJA', 'JJA', 'JJA', 
-            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-res_time = ['MEAN', 'MEAN',
-            'MEAN', 'MEAN', 'MEAN',
-            'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN']
-masko =    ['maskF', 'maskT', 
-            'maskF', 'maskT', 'maskT',
-            'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT'] 
-freq_v =   ['mon', 'mon',
-            'mon', 'mon', 'mon',
-            'mon', 'mon', 'mon', 'mon', 'mon', 'mon']
 
 nvar = len(diag_var)
 
 # parameters for sklearn feature selection methods 
-rfe_nfeat = 3 # number of features to select in RFE method
-rf_maxdepth = 4 # max depth in Random Forest method
+rfe_nfeat = 7 # number of features to select in RFE method
+rf_maxdepth = 6 # max depth in Random Forest method
 
 outdir = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/%s/Mult_Var_Lin_Reg/' %(target_var)
-region = 'CNEU'         #cut data over region?
+region = 'NAM'         #cut data over region?
 
 syear_hist = 1980
 eyear_hist = 2014
@@ -181,7 +75,6 @@ grid = 'g025'
 if (os.access(outdir, os.F_OK) == False):
         os.makedirs(outdir)
 
-#names = ["x%s" % i for i in range(1, nvar + 1)]
 names = ["%s%s %s" %(diag_var[i], var_file[i], res_name[i]) for i in range(0 , nvar)]
 ranks = {}
 pts_ranks = {}

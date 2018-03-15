@@ -3,7 +3,7 @@
 File Name : calc_opt_sigmas_cdo.py
 Author: Ruth Lorenz (ruth.lorenz@env.ethz.ch)
 Created: 08-02-2017
-Modified: Thu 15 Mar 2018 05:03:23 PM CET
+Modified: Thu 15 Mar 2018 06:05:46 PM CET
 Purpose: calculate optimal sigmas for weighting
 	 multi model mean, diagnostics precalculated
          using cdo in calc_diag_cmip5_cdo.py  

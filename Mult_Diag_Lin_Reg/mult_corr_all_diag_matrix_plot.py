@@ -33,270 +33,34 @@ archive = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/'
 freq = 'mon'
 res_name_target = 'JJA'
 
-#NAM
-#target_var = 'tasmax'
-#target_file = 'CLIM'
-#target_mask = 'maskT'
-#diag_var = ['tasmax', 'pr', 'rlus', 'rsds', 'huss', 'psl', 'hfls', 'tos', 
-#            'tasmax', 'pr', 'rlus', 'rsds', 'huss', 'psl', 'hfls', 'tos',
-#            'tasmax', 'pr', 'rlus', 'rsds', 'huss', 'psl', 'hfls', 'tos']
-#var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM','CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD','STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND']
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-#masko = [ 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT','maskF',
-#          'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT','maskF',
-#          'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT','maskF']
-
-#target_var = 'TXx'
-#target_file = 'CLIM'
-#target_mask = 'maskT'
-#res_name_target = 'ANN'
-#target_time = 'MAX'
-#freq = 'ann'
-
-#diag_var = ['TXx', 'TXx', 'TXx',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tasclt', 'tashuss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tasclt', 'tashuss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tasclt', 'tashuss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tas', 'tasmax', 'tasmin', 'dtr', 'tos', 'pr',
-#            'rnet', 'rlus', 'rsds', 'psl', 'ef', 'hfls', 'huss',
-#            'tasclt', 'tashuss']
-#var_file = ['CLIM', 'STD', 'TREND',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'CORR', 'CORR',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'CORR', 'CORR',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'CORR', 'CORR',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'CORR', 'CORR']
-#res_name = ['ANN', 'ANN', 'ANN',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA',
-#            'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-#            'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-#            'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-#            'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-#            'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-#            'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM', 'MAM',
-#            'MAM', 'MAM',
-#            'SON', 'SON', 'SON', 'SON', 'SON', 'SON',
-#            'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 
-#            'SON', 'SON', 'SON', 'SON', 'SON', 'SON',
-#            'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 
-#            'SON', 'SON', 'SON', 'SON', 'SON', 'SON',
-#            'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 'SON', 
-#            'SON', 'SON',
-#            'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 
-#            'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF',
-#            'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 
-#            'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF',
-#            'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 
-#            'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF', 'DJF',
-#            'DJF', 'DJF']
-#masko = ['maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT' ,'maskT',
-#         'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT' ,'maskT',
-#         'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT' ,'maskT',
-#         'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT' ,'maskT',
-#         'maskT', 'maskT']
-#res_time =['MAX', 'MAX', 'MAX',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
-#           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',
-#           'MEAN',  'MEAN']
-#freq_v = ['ann', 'ann', 'ann', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#          'mon', 'mon']
-
-#target_var = 'tasmax'
-#target_file = 'CLIM'
-#target_mask = 'maskT'
-#diag_var = ['tasmax', 'tasmin', 'dtr', 'pr', 'rlus', 'rsds', 'rnet', 'huss', 'psl', 'hfls', 'tos',
-#            'tasmax', 'tasmin', 'dtr', 'pr', 'rlus', 'rsds', 'rnet', 'huss', 'psl', 'hfls', 'tos',
-#            'tasmax', 'tasmin', 'dtr', 'pr', 'rlus', 'rsds', 'rnet', 'huss', 'psl', 'hfls', 'tos',
-#            'tasclt', 'tashuss']
-#var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM','CLIM', 'CLIM', 'CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD','STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-#            'CORR', 'CORR']
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA',
-#            'JJA', 'JJA']
-#masko = ['maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF',
-#         'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF',
-#         'maskT', 'maskT']
-
-target_var = 'hurs'
+# NAM
+target_var = 'tasmax'
 target_file = 'CLIM'
-target_mask = 'maskF'
-target_time = 'MEAN'
-diag_var = ['hurs', 'tas', 'tasmax', 'tasmin', 'pr', 'rlus', 'rsds', 'rnet', 'huss', 'clt', 'psl', 'hfls', 'ef', 'tos',
-            'hurs', 'tas', 'tasmax', 'tasmin', 'pr', 'rlus', 'rsds', 'rnet', 'huss', 'clt', 'psl', 'hfls', 'ef', 'tos',
-            'hurs', 'tas', 'tasmax', 'tasmin', 'pr', 'rlus', 'rsds', 'rnet', 'huss', 'clt', 'psl', 'hfls', 'ef', 'tos',
-            'tasclt', 'tashuss']
-var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND',
-            'CORR', 'CORR']
-res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
+target_mask = 'maskT'
+diag_var = ['tasmax', 'pr', 'rlus', 'rsds', 'huss', 'psl', 'hfls', 'tos', 
+            'tasmax', 'pr', 'rlus', 'rsds', 'huss', 'psl', 'hfls', 'tos',
+            'tasmax', 'pr', 'rlus', 'rsds', 'huss', 'psl', 'hfls', 'tos']
+var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM','CLIM',
+            'STD', 'STD', 'STD', 'STD', 'STD', 'STD', 'STD','STD',
+            'TREND', 'TREND', 'TREND', 'TREND','TREND','TREND','TREND','TREND']
+res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA',
+            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA','JJA',
             'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-res_time = ['MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN', 'MEAN',
-           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN', 'MEAN',
-           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN', 'MEAN',
-           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN', 'MEAN',
-           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN', 'MEAN',
-           'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN', 'MEAN',
-           'MEAN',  'MEAN']
-freq_v = ['mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-          'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-          'mon', 'mon']
-masko = [ 'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT', 'maskT', 'maskF',
-          'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT', 'maskT', 'maskF',
-          'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT', 'maskT', 'maskF',
-          'maskT', 'maskT']
+masko = [ 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT','maskF',
+          'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT','maskF',
+          'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT','maskF']
 
 nvar = len(diag_var)
 outdir = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/%s/Mult_Var_Lin_Reg/' %(target_var)
-region = 'CNEU'         #cut data over region?
+region = 'NAM'         #cut data over region?
 
 syear_hist = 1980
 eyear_hist = 2014
 syear_fut = 2065
 eyear_fut = 2099
 
-low_corr_thres_pval = 0.1
-high_corr_thres = 0.8
+low_corr_thres_pval = 0.05
+high_corr_thres = 0.85
 
 nyears = eyear_hist - syear_hist + 1
 grid = 'g025'
@@ -471,7 +235,6 @@ for v in xrange(len(diag_var)):
             if (diag_var[v] == 'sic') and  (model == "EC-EARTH"):
                 with np.errstate(invalid = 'ignore'):
                     temp_mod[temp_mod < 0.0] = np.NaN
-            # average over area and save value for each model
             # average over area and save value for each model
             w_lat = np.cos(lat * (4.0 * math.atan(1.0) / 180))
             ma_hist = np.ma.masked_array(temp_mod,

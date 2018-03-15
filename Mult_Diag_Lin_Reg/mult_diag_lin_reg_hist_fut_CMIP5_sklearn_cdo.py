@@ -16,7 +16,6 @@ import glob as glob
 import os
 from sklearn import linear_model
 from sklearn.metrics import r2_score
-#from sklearn.svm import SVC
 from sklearn.cross_validation import cross_val_score
 from sklearn.feature_selection import RFE, RFECV
 from os.path import expanduser
@@ -46,6 +45,7 @@ target_mask = 'maskT'
 freq = 'mon'
 res_name_target = 'JJA'
 target_time = 'MEAN'
+
 #NAM
 diag_var = ['tasmax', 'pr', 'tasmax', 'pr', 'huss', 'hfls', 'tos',
             'tasmax', 'rsds']
@@ -57,128 +57,10 @@ res_time = ['MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',
             'MEAN', 'MEAN']
 freq_v =   ['mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon']
 
-# NAM end selection
-#diag_var = ['tasmax', 'pr', 'rsds',  'tasmax', 'rsds'] 
-#var_file = ['CLIM', 'CLIM', 'CLIM', 'TREND', 'TREND']
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-
-#target_var = 'tasmax'
-#target_file = 'STD'
-#target_mask = 'maskT'
-#freq = 'mon'
-#res_name_target = 'JJA'
-#target_time = 'MEAN'
-#NAM
-#diag_var = ['tasmax', 'pr', 'rsds', 'tos', 'huss', 'huss', 'tos', 'tasmax']
-#var_file = ['STD', 'STD', 'STD', 'STD', 'CLIM', 'TREND', 'CLIM', 'TREND']
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-#masko = ['maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT', 'maskF', 'maskT']
-#res_time = ['MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN','MEAN']
-#freq_v = ['mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon']
-
-#EUR
-#target_var = 'tas'
-#target_file = 'SCALE'
-#target_mask = 'maskT'
-#diag_var = ['tas',   'rlus',  'ef',    'tas',   'psl',   'tos',   'psl',   'psl',   'ef',    'tasclt', 'rnet', 'tos', 'tasclt'] #
-#var_file = ['CLIM',  'CLIM',  'CLIM',  'TREND', 'STD',   'STD',   'CLIM',  'STD',   'TREND', 'CORR',  'CLIM',  'STD', 'CORR'] #
-#res_name = ['JJA',   'JJA',   'JJA',   'JJA',   'MAM',   'MAM',   'SON',   'SON',   'SON',   'SON',   'DJF',   'DJF', 'DJF']
-#masko =    ['maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT']
-
-#EUR & CNEU
-#target_var = 'TXx'
-#target_file = 'CLIM'
-#target_mask = 'maskT'
-#res_name_target = 'ANN'
-#target_time = 'MAX'
-#freq = 'ann'
-
-#EUR
-#diag_var = ['tas',   'rsds',  'ef',    'tas',    'tos',    'psl',  'psl',   'psl',   'ef',    'rnet', 'tos', 'tasclt'] #
-#var_file = ['CLIM',  'CLIM',  'CLIM',  'TREND',  'STD',   'STD',   'CLIM',  'STD',   'TREND', 'CLIM',  'STD',  'CORR'] #
-#res_name = ['JJA',   'JJA',   'JJA',   'JJA',    'MAM',   'MAM',   'SON',   'SON',   'SON',   'DJF',   'DJF',   'DJF']
-#masko =    ['maskT', 'maskT', 'maskT', 'maskT',  'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF', 'maskT']
-
-#CNEU
-#diag_var = ['TXx',  'TXx',  'TXx',   'rsds',  'tas',   'psl',   'pr',   'rnet',   'psl',   'ef',    'tos',  'tos',   'rnet',  'huss',  'tasclt','tos',  'rnet',  'psl',  'tas'] #
-#var_file = ['STD',  'TREND','CLIM',  'CLIM',  'STD',   'STD',   'TREND', 'TREND', 'TREND', 'TREND', 'CLIM', 'STD',   'STD',   'STD',   'CORR',  'STD',  'STD',   'STD',  'TREND'] #
-#res_name = ['ANN',  'ANN',  'ANN',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'JJA',   'MAM',  'MAM',   'MAM',   'MAM',   'MAM',   'SON',  'SON',   'SON',  'SON']
-#res_time = ['MAX',  'MAX',  'MAX',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',  'MEAN',  'MEAN',  'MEAN',  'MEAN', 'MEAN',  'MEAN', 'MEAN']
-#masko =    ['maskT','maskT','maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF','maskF', 'maskT', 'maskT', 'maskT', 'maskF','maskT', 'maskT','maskT']
-#freq_v =   ['ann',  'ann',  'ann',   'mon',   'mon',   'mon',   'mon',   'mon',   'mon',   'mon',   'mon',  'mon',   'mon',   'mon',   'mon',   'mon',  'mon',   'mon',  'mon']
-
-#EUR
-#diag_var = ['TXx',   'TXx','tos',   'rnet', 'tos',   'hfls',  'pr',    'rnet', 'ef',   'rnet',  'ef',   'rsds', 'hfls',  'tasclt', 'pr',    'rsds']
-#var_file = ['TREND', 'CLIM', 'CLIM',  'CLIM', 'STD',    'STD',   'TREND', 'TREND','TREND','STD',   'STD',  'TREND','TREND', 'CORR',   'CLIM',  'CLIM']
-#res_name = ['ANN',   'ANN',   'JJA',   'JJA',  'JJA',   'JJA',   'JJA',   'JJA',  'JJA',  'MAM',   'SON',  'SON',  'SON',   'SON',    'DJF',   'DJF']
-#res_time = ['MAX',   'MAX',   'MEAN',  'MEAN', 'MEAN',  'MEAN', 'MEAN',  'MEAN', 'MEAN', 'MEAN',  'MEAN', 'MEAN', 'MEAN',  'MEAN',   'MEAN',  'MEAN']
-#masko =    ['maskT', 'maskT', 'maskF', 'maskT','maskF', 'maskT', 'maskT', 'maskT','maskT','maskT', 'maskT','maskT','maskT', 'maskT',  'maskT', 'maskT']
-#freq_v =   ['ann',   'ann',   'mon',   'mon',  'mon',   'mon',   'mon',   'mon',  'mon',  'mon',   'mon',  'mon',  'mon',   'mon',    'mon',   'mon']
-
-# CNEU clt
-#target_var = 'clt'
-#target_file = 'CLIM'
-#target_mask = 'maskF'
-#res_name_target = 'JJA'
-#target_time = 'MEAN'
-#freq = 'mon'
-
-#diag_var = ['clt', 'tasmax', 'rnet', 'huss', 'ef', 'tos',
-#            'clt', 'tas', 'pr', 'rnet', 'huss', 'hurs',
-#            'clt', 'tasmax', 'pr', 'rsds', 'huss', 'ef', 'tashuss']
-#var_file = ['CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM', 'CLIM',
-#            'STD', 'STD', 'STD', 'STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'TREND', 'CORR']
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-#res_time = ['MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN',
-#            'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN',
-#            'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN']
-#masko =    ['maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF',
-#            'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskF',
-#            'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT'] 
-#freq_v =   ['mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#            'mon', 'mon', 'mon', 'mon', 'mon', 'mon',
-#            'mon', 'mon', 'mon', 'mon', 'mon', 'mon', 'mon']
-
-# CNEU hurs
-#target_var = 'hurs'
-#target_file = 'CLIM'
-#target_mask = 'maskF'
-#res_name_target = 'JJA'
-#target_time = 'MEAN'
-#freq = 'mon'
-
-#diag_var = ['hurs', 'pr', 
-#            'hurs', 'tasmax', 'tasmin',
-#            'hurs', 'pr', 'psl', 'hfls', 'tasclt', 'tashuss']
-#var_file = ['CLIM', 'CLIM', 
-#            'STD', 'STD', 'STD',
-#            'TREND', 'TREND', 'TREND', 'TREND', 'CORR', 'CORR']
-#res_name = ['JJA', 'JJA',
-#            'JJA', 'JJA', 'JJA', 
-#            'JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
-#res_time = ['MEAN', 'MEAN',
-#            'MEAN', 'MEAN', 'MEAN',
-#            'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN', 'MEAN']
-#masko =    ['maskF', 'maskT', 
-#            'maskF', 'maskT', 'maskT',
-#            'maskF', 'maskT', 'maskT', 'maskT', 'maskT', 'maskT'] 
-#freq_v =   ['mon', 'mon',
-#            'mon', 'mon', 'mon',
-#            'mon', 'mon', 'mon', 'mon', 'mon', 'mon']
-
 nvar = len(diag_var)
 
 ols = linear_model.LinearRegression(normalize = True) 
 Labelols = "OLS"
-#clf = linear_model.Ridge(normalize = True)
-#Labelclf = "Ridge"
-#clf = linear_model.RidgeCV(normalize = True)
-#Labelclf = "RidgeCV"
-#clf = linear_model.BayesianRidge(compute_score = True)
-#Labelclf = "BayesianRidge"
 clf = linear_model.TheilSenRegressor(random_state = 50, copy_X = True)
 Labelclf = "Theil-Sen"
 
@@ -475,31 +357,18 @@ matplotlib.rcParams['mathtext.fontset'] = 'custom'
 matplotlib.rcParams['mathtext.rm'] = 'Bitstream Vera Sans'
 matplotlib.rcParams['mathtext.it'] = 'Bitstream Vera Sans:italic'
 matplotlib.rcParams['mathtext.bf'] = 'Bitstream Vera Sans:bold'
-#matplotlib.rcParams['xtick.labelsize'] = 15
-#matplotlib.rcParams['ytick.labelsize'] = 15
 matplotlib.rcParams.update({'font.size': 15})
 
 ma_change_target_areaavg = np.ma.masked_array(target, np.isnan(target))
 for v in range(nvar):
     ma_data_areaavg = np.ma.masked_array(data[:, v], np.isnan(data[:, v]))
     corr = np.ma.corrcoef(ma_data_areaavg, ma_change_target_areaavg)
-    #print('Corr %s %s and %s %s: %s' %(diag_var[v], var_file[v], target_var, target_file, round(corr[0, 1], 3)))
     clf.fit(data[:, v].reshape(-1, 1), np.squeeze(target.reshape(-1, 1)))
     r2_clf = r2_score(target.reshape(-1, 1),
                       clf.predict(data[:, v].reshape(-1, 1)))
     ols.fit(data[:, v].reshape(-1, 1), target.reshape(-1, 1))
     r2_ols = r2_score(target.reshape(-1, 1),
                       ols.predict(data[:, v].reshape(-1, 1)))
-    # The coefficients
-    #print('Coefficients: \n', clf.coef_)
-    # The mean square error
-    #print("Residual sum of squares: %.2f"
-    #      % np.mean((clf.predict(data[:,v].reshape(-1, 1)) - target.reshape(-1, 1)) ** 2))
-    #print("R^2: %.2f" %(r2_clf))
-    # Explained variance score: 1 is perfect prediction
-    #print('Variance score: %.2f' % clf.score(data[:,v].reshape(-1, 1),
-    #                                         target.reshape(-1, 1)))
-    # Plot outputs
     ax = plt.subplot(gs[0, v])
     ax.scatter(data[:, v], target,  color = colors[v], label = 'True')
     ax.plot(data[:, v].reshape(-1, 1),
@@ -517,20 +386,11 @@ for v in range(nvar):
     ax.text(0.7, 1.034, '{R$_{OLS}^{2}$: %.2f}' %(r2_ols),
             horizontalalignment = 'center', verticalalignment = 'center',
             transform = ax.transAxes, fontsize = 12, color = 'gray')
-    #ax.text(0.25, 0.93,'Corr = %.2f' %(round(corr[0, 1], 3)), ha = 'center',
-    #        va = 'center', transform = ax.transAxes)
-#    if (diag_var[v] == "huss"):
-#        ax.set_xlim([np.min(data[:, v]) - 0.0001,
-#                     np.max(data[:, v]) + 0.0001])
-#        # Rewrite the x labels
-#        x_labels = ax.get_xticks()
-#        ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
-#        plt.locator_params(axis = 'x', nbins = 5)
+
     if (diag_var[v] == "ef") and (var_file[v] == "TREND"):
         ax.set_xlim([- 0.004, 0.004])
         # Rewrite the x labels
         x_labels = ax.get_xticks()
-        #ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
         plt.locator_params(axis = 'x', nbins = 5)
 
     ax.set_xlabel('%s %s %s [%s]' %(diag_var[v], var_file[v], res_name[v],
@@ -545,7 +405,6 @@ for v in range(nvar):
         ma_data_areaavg = np.ma.masked_array(data[:, x + v + 1],
                                              np.isnan(data[:, x + v + 1]))
         corr = np.ma.corrcoef(ma_data_areaavg, ma_datav_areaavg)
-        #print('Corr %s %s and %s %s: %s' %(diag_var[x+v+1], var_file[x+v+1], diag_var[v], var_file[v], round(corr[0, 1], 3)))
         clf.fit(data[:, x + v + 1].reshape(-1, 1),
                 np.squeeze(data[:, v].reshape(-1, 1)))
         ols.fit(data[:, x + v + 1].reshape(-1, 1),
@@ -553,17 +412,7 @@ for v in range(nvar):
         r2_clf = r2_score(data[:, v].reshape(-1, 1),
                           clf.predict(data[:, x + v + 1].reshape(-1, 1)))
         r2_ols = r2_score(data[:, v].reshape(-1, 1),
-                          ols.predict(data[:, x + v + 1].reshape(-1, 1)))                
-        # The coefficients
-        #print('Coefficients: \n', clf.coef_)
-        # The mean square error
-        #print("Residual sum of squares: %.2f"
-        #      % np.mean((clf.predict(data[:, x + v + 1].reshape(-1, 1)) 
-        #                 - data[:, v].reshape(-1, 1)) ** 2))
-        #print("R^2: %.2f" %(r2_clf))
-        # Explained variance score: 1 is perfect prediction
-        #print('Variance score: %.2f' % clf.score(data[:, x + v + 1].reshape(-1, 1), data[:, v].reshape(-1, 1)))
-
+                          ols.predict(data[:, x + v + 1].reshape(-1, 1)))
         # Plot outputs
         ax2 = plt.subplot(gs[v + 1, x + v + 1])
         p1 = ax2.scatter(data[:, x + v + 1], data[:, v],
@@ -585,7 +434,6 @@ for v in range(nvar):
                          eint_obs_areaavg[v], color = 'hotpink', 
                          marker = "^", label = 'ERAint')
 
-        #ax2.set_title(r"R$^2$: %.2f" % (r2_clf), fontsize = 12)
         ax2.text(0.3, 1.048, 'R$^2$: %.2f,' %(r2_clf),
                  horizontalalignment = 'center',
                  verticalalignment = 'center',
@@ -594,33 +442,15 @@ for v in range(nvar):
                  horizontalalignment = 'center',
                  verticalalignment = 'center',
                  transform = ax2.transAxes, fontsize = 12, color = 'gray')
-        #ax2.text(0.25, 0.93,'Corr = %.2f' %(round(corr[0, 1], 3)),
-        #         ha = 'center', va='center', transform = ax2.transAxes)
-#        if (diag_var[x+v+1] == "huss"):
-#            ax2.set_xlim([np.min(data[:, x + v + 1]) - 0.0001,
-#                          np.max(data[:, x + v + 1]) + 0.0001])
-#            # Rewrite the x labels
-#            x_labels = ax2.get_xticks()
-#            ax2.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
-#            plt.locator_params(axis = 'x', nbins = 5)
-#        if (diag_var[v] == "huss"):
-#            ax2.set_ylim([np.min(data[:, v]) - 0.0001,
-#                          np.max(data[:, v]) + 0.0001])
-#            # Rewrite the x labels
-#            y_labels = ax2.get_yticks()
-#            ax2.yaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
-#            plt.locator_params(axis = 'y', nbins = 5)
         if (diag_var[v] == "ef") and (var_file[v] == "TREND"):
             ax2.set_xlim([- 0.004, 0.004])
             # Rewrite the x labels
             x_labels = ax2.get_xticks()
-            #ax2.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
             plt.locator_params(axis = 'x', nbins = 5)
         if (diag_var[0] == "ef") and (var_file[0] == "TREND"):
             ax2.set_ylim([- 0.004, 0.004])
             # Rewrite the x labels
             y_labels = ax2.get_yticks()
-            #ax2.yaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
             plt.locator_params(axis = 'y', nbins = 5)
 
         ax2.set_xlabel('%s %s %s [%s]' %(diag_var[x + v + 1],
@@ -629,12 +459,10 @@ for v in range(nvar):
                                          data_unit[x + v + 1]))
         ax2.set_ylabel('%s %s %s [%s]' %(diag_var[v], var_file[v], res_name[v],
                                          data_unit[v]))
-        #plt.xticks(())
 
 fig.legend((p1, p2, p3, p4), ('CMIP5', 'OBS', 'MERRA2', 'ERAint'),
            'lower left', scatterpoints = 1)
 plt.tight_layout()
-#plt.show()
 plt.savefig('%spanel_regressions_%s_change_%s_%s_%s_%s.pdf' %(outdir, Labelclf,
                                                               target_var,
                                                               target_file,
@@ -647,7 +475,6 @@ gs = gridspec.GridSpec(2, nvar)
 for v in range(nvar):
     ma_data_areaavg = np.ma.masked_array(data[:, v], np.isnan(data[:, v]))
     corr = np.ma.corrcoef(ma_data_areaavg, ma_change_target_areaavg)
-    #print('Corr %s %s and %s %s: %s' %(diag_var[v], var_file[v], target_var, target_file, round(corr[0, 1], 3)))
     clf.fit(data[:, v].reshape(-1, 1), np.squeeze(target.reshape(-1, 1)))
     r2_clf = r2_score(target.reshape(-1, 1),
                       clf.predict(data[:, v].reshape(-1, 1)))
@@ -672,20 +499,11 @@ for v in range(nvar):
     ax.text(0.7, 1.034, '{R$_{OLS}^{2}$: %.2f}' %(r2_ols),
             horizontalalignment = 'center', verticalalignment = 'center',
             transform = ax.transAxes, fontsize = 12, color = 'gray')
-    #ax.text(0.25, 0.93,'Corr = %.2f' %(round(corr[0, 1], 3)), ha = 'center',
-    #        va = 'center', transform = ax.transAxes)
-#    if (diag_var[v] == "huss"):
-#        ax.set_xlim([np.min(data[:, v]) - 0.0001,
-#                     np.max(data[:, v]) + 0.0001])
-#        # Rewrite the x labels
-#        x_labels = ax.get_xticks()
-#        ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
-#        plt.locator_params(axis = 'x', nbins = 5)
+
     if (diag_var[v] == "ef") and (var_file[v] == "TREND"):
         ax.set_xlim([- 0.004, 0.004])
         # Rewrite the x labels
         x_labels = ax.get_xticks()
-        #ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
         plt.locator_params(axis = 'x', nbins = 5)
     ax.set_xlabel('%s %s %s [%s]' %(diag_var[v], var_file[v], res_name[v],
                                     data_unit[v]))
@@ -728,7 +546,6 @@ for v in range(nvar):
                          eint_obs_areaavg[0], color = 'hotpink', 
                          marker = "^", label = 'ERAint')
 
-        #ax2.set_title(r"R$^2$: %.2f" % (r2_clf), fontsize = 12)
         ax2.text(0.3, 1.048, 'R$^2$: %.2f,' %(r2_clf),
                  horizontalalignment = 'center',
                  verticalalignment = 'center',
@@ -737,45 +554,25 @@ for v in range(nvar):
                  horizontalalignment = 'center',
                  verticalalignment = 'center',
                  transform = ax2.transAxes, fontsize = 12, color = 'gray')
-        #ax2.text(0.25, 0.93,'Corr = %.2f' %(round(corr[0, 1], 3)),
-        #         ha = 'center', va='center', transform = ax2.transAxes)
-#        if (diag_var[v] == "huss"):
-#            ax2.set_xlim([np.min(data[:, v]) - 0.0001,
-#                          np.max(data[:, v]) + 0.0001])
-#            # Rewrite the x labels
-#            x_labels = ax2.get_xticks()
-#            ax2.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
-#            plt.locator_params(axis = 'x', nbins = 5)
-#        if (diag_var[0] == "huss"):
-#            ax2.set_ylim([np.min(data[:, 0]) - 0.0001,
-#                          np.max(data[:, 0]) + 0.0001])
-#            # Rewrite the x labels
-#            y_labels = ax2.get_yticks()
-#            ax2.yaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
-#            plt.locator_params(axis = 'y', nbins = 5)
         if (diag_var[v] == "ef") and (var_file[v] == "TREND"):
             ax2.set_xlim([- 0.004, 0.004])
             # Rewrite the x labels
             x_labels = ax2.get_xticks()
-            #ax2.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
             plt.locator_params(axis = 'x', nbins = 5)
         if (diag_var[0] == "ef") and (var_file[0] == "TREND"):
             ax2.set_ylim([- 0.004, 0.004])
             # Rewrite the x labels
             y_labels = ax2.get_yticks()
-            #ax2.yaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter('%0.0e'))
             plt.locator_params(axis = 'y', nbins = 5)
 
         ax2.set_xlabel('%s %s %s [%s]' %(diag_var[v], var_file[v], res_name[v],
                                          data_unit[v]))
         ax2.set_ylabel('%s %s %s [%s]' %(diag_var[0], var_file[0], res_name[0],
                                          data_unit[0]))
-        #plt.xticks(())
 
 fig.legend((p1, p2, p3, p4), ('CMIP5', 'OBS', 'MERRA2', 'ERAint'),
            'lower left', scatterpoints = 1)
 gs.tight_layout(fig, h_pad = 2.0)
-#plt.show()
 plt.savefig('%spanel_regressions_%s_change_%s_%s_%s_%s_tworows.pdf' %(
     outdir, Labelclf, target_var, target_file, res_name_target, region))
 
@@ -930,7 +727,6 @@ for v in range(nvar):
 fig.legend((p1, p5, p2, p3, p4), ('CMIP5', 'CMIP5 mean', 'OBS', 'MERRA2', 'ERAint'),
            'upper right', scatterpoints = 1)
 gs.tight_layout(fig, h_pad = 2.0)
-#plt.show()
 plt.savefig('%spanel_regressions_%s_change_%s_%s_%s_%s_tworows_port.pdf' %(
     outdir, Labelclf, target_var, target_file, res_name_target, region))
 
@@ -979,7 +775,6 @@ plt.figure()
 plt.xlabel("Number of features selected")
 plt.ylabel("Cross validation score (nb of correct classifications)")
 plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
-#plt.show()
 plt.savefig('%sCV_nfeatures_%s_change_%s_%s_%s_%s.pdf' %(
     outdir, Labelclf, target_var, target_file, res_name_target, region))
   

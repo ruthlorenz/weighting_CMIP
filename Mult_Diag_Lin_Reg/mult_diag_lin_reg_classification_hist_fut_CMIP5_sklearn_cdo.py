@@ -39,37 +39,18 @@ from matplotlib import rc
 experiment = 'rcp85'
 archive = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/'
 
-target_var = 'TXx'
+target_var = 'tasmax'
 target_file = 'CLIM'
-res_name_target = 'ANN'
-target_time = 'MAX'
+res_name_target = 'JJA'
+target_time = 'MEAN'
 target_mask = 'maskT'
-freq = 'ann'
+freq = 'mon'
 
 # NAM end selection tasmaxCLIM
-#diag_var = ['tasmax', 'rsds', 'pr', 'tos', 'tasmax', 'tasmax'] #'tasmax', 'rsds', 'pr', 'tos', 'tasmax', 'tasmax'
-#var_file = ['CLIM','TREND', 'CLIM', 'STD', 'STD', 'TREND'] #'CLIM', 'TREND', 'CLIM', 'STD', 'STD', 'TREND'
-#res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA'] #, 'JJA'
-#masko = ['maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT'] #
-#NAM end selection tasmaxSTD
-#diag_var = ['huss', 'pr'] #'tasmax', 'tos', 'huss', 'tasmax', 'pr'
-#var_file = ['CLIM',  'STD'] #'STD',  'STD', 'CLIM', 'TREND', 'STD'
-#res_name = ['JJA', 'JJA'] #'JJA', 'JJA', 'JJA', 'JJA', 'JJA'
-# EUR end selection tasSCALE
-#diag_var = ['rsds'] #'tas', 'tas', 'tos', 'rsds'
-#var_file = ['CLIM'] # 'CLIM', 'TREND', 'TREND', 'CLIM'
-#res_name = ['JJA'] #, 'JJA', 'JJA', 'JJA', 'JJA'
-#masko = ['maskT'] #, 'maskT'
-# CNEU end selection tasSCALE
-#diag_var = ['tas', 'tas',  'tos'] #'tas', 'tas',  'tos', 'tas', 'ef', 'pr'
-#var_file = ['TREND', 'CLIM', 'TREND'] # 'TREND', 'STD', 'TREND', 'CLIM', 'CLIM', 'TREND'
-# EUR & CNEU
-diag_var = ['TXx',   'pr',  'TXx'] #'ef', 
-var_file = ['TREND', 'TREND', 'STD']    #, 'TREND'
-res_name = ['ANN',  'JJA',  'ANN']   #, 'JJA'
-res_time = ['MAX',  'MEAN', 'MAX']   #'MEAN',  
-freq_v =   ['ann',  'mon',   'ann']  #'mon', 
-masko = ['maskT', 'maskT', 'maskT'] #'maskT',
+diag_var = ['tasmax', 'rsds', 'pr', 'tos', 'tasmax', 'tasmax']
+var_file = ['CLIM','TREND', 'CLIM', 'STD', 'STD', 'TREND']
+res_name = ['JJA', 'JJA', 'JJA', 'JJA', 'JJA', 'JJA']
+masko = ['maskT', 'maskT', 'maskT', 'maskF', 'maskT', 'maskT']
 
 nvar = len(diag_var)
 
@@ -86,13 +67,13 @@ lassoCV = linear_model.LassoCV(precompute = 'auto', cv = 5,
                                selection = 'random', normalize = True)
 Labellasso = "LassoCV"
 
-rf_maxdepth = 4 # max depth in Random Forest method
+rf_maxdepth = 6 # max depth in Random Forest method
 rf = RandomForestRegressor(random_state = 0, n_estimators = 100,
                            max_features = 'sqrt', max_depth = rf_maxdepth)
 Labelrf = "RandomForest"
 
 outdir = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/%s/Mult_Var_Lin_Reg/' %(target_var)
-region = 'CNEU'          #cut data over region?
+region = 'NAM'          #cut data over region?
 
 syear_hist = 1980
 eyear_hist = 2014
