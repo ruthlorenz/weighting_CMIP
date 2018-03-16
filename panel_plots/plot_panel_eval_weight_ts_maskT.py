@@ -201,18 +201,18 @@ if (len(diagnum) == 4):
                     data_lowwmm['%s_4' %(obsdata[0])],
                     data_lowwmm['%s_4' %(obsdata[1])],
                     data_lowwmm['%s_4' %(obsdata[2])]]
-    titles = ['(a) spread change = %s' %(d_spread_change['%s_1' %(obsdata[0])]),
-              '(b) spread change = %s' %(d_spread_change['%s_1' %(obsdata[1])]),
-              '(c) spread change = %s' %(d_spread_change['%s_1' %(obsdata[2])]),
-              '(d) spread change = %s' %(d_spread_change['%s_2' %(obsdata[0])]),
-              '(e) spread change = %s' %(d_spread_change['%s_2' %(obsdata[1])]),
-              '(f) spread change = %s' %(d_spread_change['%s_2' %(obsdata[2])]),
-              '(g) spread change = %s' %(d_spread_change['%s_3' %(obsdata[0])]),
-              '(h) spread change = %s' %(d_spread_change['%s_3' %(obsdata[1])]),
-              '(i) spread change = %s' %(d_spread_change['%s_3' %(obsdata[2])]),
-              '(j) spread change = %s' %(d_spread_change['%s_4' %(obsdata[0])]),
-              '(k) spread change = %s' %(d_spread_change['%s_4' %(obsdata[1])]),
-              '(l) spread change = %s' %(d_spread_change['%s_4' %(obsdata[2])])]
+    titles = ['(a) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[0])], unit),
+              '(b) spread change = %s %s]' %(d_spread_change['%s_1' %(obsdata[1])], unit),
+              '(c) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[2])], unit),
+              '(d) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[0])], unit),
+              '(e) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[1])], unit),
+              '(f) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[2])], unit),
+              '(g) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[0])], unit),
+              '(h) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[1])], unit),
+              '(i) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[2])], unit),
+              '(j) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[0])], unit),
+              '(k) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[1])], unit),
+              '(l) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[2])], unit)]
     fig = plt.figure(figsize = (17, 10))
     heightratios = [0.1, 1, 1, 1, 1]
 elif (len(diagnum) == 5):
@@ -321,21 +321,21 @@ elif (len(diagnum) == 5):
                     data_lowwmm['%s_5' %(obsdata[0])],
                     data_lowwmm['%s_5' %(obsdata[1])],
                     data_lowwmm['%s_5' %(obsdata[2])]]
-    titles = ['(a) spread change = %s' %(d_spread_change['%s_1' %(obsdata[0])]),
-              '(b) spread change = %s' %(d_spread_change['%s_1' %(obsdata[1])]),
-              '(c) spread change = %s' %(d_spread_change['%s_1' %(obsdata[2])]),
-              '(d) spread change = %s' %(d_spread_change['%s_2' %(obsdata[0])]),
-              '(e) spread change = %s' %(d_spread_change['%s_2' %(obsdata[1])]),
-              '(f) spread change = %s' %(d_spread_change['%s_2' %(obsdata[2])]),
-              '(g) spread change = %s' %(d_spread_change['%s_3' %(obsdata[0])]),
-              '(h) spread change = %s' %(d_spread_change['%s_3' %(obsdata[1])]),
-              '(i) spread change = %s' %(d_spread_change['%s_3' %(obsdata[2])]),
-              '(j) spread change = %s' %(d_spread_change['%s_4' %(obsdata[0])]),
-              '(k) spread change = %s' %(d_spread_change['%s_4' %(obsdata[1])]),
-              '(l) spread change = %s' %(d_spread_change['%s_4' %(obsdata[2])]),
-              '(m) spread change = %s' %(d_spread_change['%s_5' %(obsdata[0])]),
-              '(n) spread change = %s' %(d_spread_change['%s_5' %(obsdata[1])]),
-              '(o) spread change = %s' %(d_spread_change['%s_5' %(obsdata[2])])]
+    titles = ['(a) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[0])], unit),
+              '(b) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[1])], unit),
+              '(c) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[2])], unit),
+              '(d) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[0])], unit),
+              '(e) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[1])], unit),
+              '(f) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[2])], unit),
+              '(g) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[0])], unit),
+              '(h) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[1])], unit),
+              '(i) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[2])], unit),
+              '(j) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[0])], unit),
+              '(k) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[1])], unit),
+              '(l) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[2])], unit),
+              '(m) spread change = %s %s' %(d_spread_change['%s_5' %(obsdata[0])], unit),
+              '(n) spread change = %s %s' %(d_spread_change['%s_5' %(obsdata[1])], unit),
+              '(o) spread change = %s %s' %(d_spread_change['%s_5' %(obsdata[2])], unit)]
     fig = plt.figure(figsize = (17, 12))
     heightratios = [0.1, 1, 1, 1, 1, 1]
 elif (len(diagnum) == 6):
@@ -465,24 +465,24 @@ elif (len(diagnum) == 6):
                     data_lowwmm['%s_6' %(obsdata[0])],
                     data_lowwmm['%s_6' %(obsdata[1])],
                     data_lowwmm['%s_6' %(obsdata[2])]]
-    titles = ['(a) spread change = %s' %(d_spread_change['%s_1' %(obsdata[0])]),
-              '(b) spread change = %s' %(d_spread_change['%s_1' %(obsdata[1])]),
-              '(c) spread change = %s' %(d_spread_change['%s_1' %(obsdata[2])]),
-              '(d) spread change = %s' %(d_spread_change['%s_2' %(obsdata[0])]),
-              '(e) spread change = %s' %(d_spread_change['%s_2' %(obsdata[1])]),
-              '(f) spread change = %s' %(d_spread_change['%s_2' %(obsdata[2])]),
-              '(g) spread change = %s' %(d_spread_change['%s_3' %(obsdata[0])]),
-              '(h) spread change = %s' %(d_spread_change['%s_3' %(obsdata[1])]),
-              '(i) spread change = %s' %(d_spread_change['%s_3' %(obsdata[2])]),
-              '(j) spread change = %s' %(d_spread_change['%s_4' %(obsdata[0])]),
-              '(k) spread change = %s' %(d_spread_change['%s_4' %(obsdata[1])]),
-              '(l) spread change = %s' %(d_spread_change['%s_4' %(obsdata[2])]),
-              '(m) spread change = %s' %(d_spread_change['%s_5' %(obsdata[0])]),
-              '(n) spread change = %s' %(d_spread_change['%s_5' %(obsdata[1])]),
-              '(o) spread change = %s' %(d_spread_change['%s_5' %(obsdata[2])]),
-              '(p) spread change = %s' %(d_spread_change['%s_6' %(obsdata[0])]),
-              '(q) spread change = %s' %(d_spread_change['%s_6' %(obsdata[1])]),
-              '(r) spread change = %s' %(d_spread_change['%s_6' %(obsdata[2])])]
+    titles = ['(a) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[0])], unit),
+              '(b) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[1])], unit),
+              '(c) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[2])], unit),
+              '(d) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[0])], unit),
+              '(e) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[1])], unit),
+              '(f) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[2])], unit),
+              '(g) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[0])], unit),
+              '(h) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[1])], unit),
+              '(i) spread change = %s %s' %(d_spread_change['%s_3' %(obsdata[2])], unit),
+              '(j) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[0])], unit),
+              '(k) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[1])], unit),
+              '(l) spread change = %s %s' %(d_spread_change['%s_4' %(obsdata[2])], unit),
+              '(m) spread change = %s %s' %(d_spread_change['%s_5' %(obsdata[0])], unit),
+              '(n) spread change = %s %s' %(d_spread_change['%s_5' %(obsdata[1])], unit),
+              '(o) spread change = %s %s' %(d_spread_change['%s_5' %(obsdata[2])], unit),
+              '(p) spread change = %s %s' %(d_spread_change['%s_6' %(obsdata[0])], unit),
+              '(q) spread change = %s %s' %(d_spread_change['%s_6' %(obsdata[1])], unit),
+              '(r) spread change = %s %s' %(d_spread_change['%s_6' %(obsdata[2])], unit)]
     fig = plt.figure(figsize = (20, 22))
     heightratios = [0.1, 1, 1, 1, 1, 1, 1]
     
@@ -498,6 +498,7 @@ with open('spread_change_%s_%s_%s_%s_%s.csv' %(variable, diag, region, wu, wq),
     for key, value in d_spread_change.items():
        writer.writerow([key, value])
 
+## plot timeseries
 plotname = '%s/panel_ts_weighted_%s_%s_%s_%s_%s_%sby%s' %(
     outdir, variable, diag, region, wu, wq, nrow, ncol)
 gs = gridspec.GridSpec(nrow + 1, ncol + 1, height_ratios = heightratios,
@@ -605,4 +606,30 @@ if (plottype == '.eps'):
     call("epstopdf " + plotname + plottype, shell = True)
 call("pdfcrop " + plotname + ".pdf " + plotname + ".pdf", shell = True)
 
+## plot spread and mean
+plotname = '%s/mean_spread_change_weighted_%s_%s_%s_%s_%s_%sdiags' %(
+    outdir, variable, diag, region, wu, wq, nrow)
+fig = plt.figure(figsize = (14, 10), dpi = 300)
+plt.axhline(y = 0.0, color = 'k' ,linewidth = 1)
+plt.tick_params(axis = 'both', which = 'major', labelsize = 15)
+xax_range = range(1, 7, 1)
+color = ['seagreen', 'firebrick', 'purple']
+for obs in range(0, len(obsdata)):
+    plot_spread = list()
+    plot_mean = list()
+    for i in range(0, len(diagnum)):
+        plot_spread.append(d_spread_change['%s_%s' %(obsdata[obs], diagnum[i])])
+        plot_mean.append(d_mean_change['%s_%s' %(obsdata[obs], diagnum[i])])
+    plt.plot(xax_range, plot_mean, color = color[obs], linewidth = 3, label = obsdata[obs])
+    plt.plot(xax_range, plot_spread, color = color[obs], linewidth = 3,
+             linestyle = '--')
+plt.ylim(-1.8, 1.8)
+
+plt.title('Mean and spread change for region %s' %region, fontsize = 18)
+plt.xlabel('Number of diagnostics included to inform weighting', fontsize = 18)
+plt.ylabel('Change in mean (-) and spread (--) [%s]' %(unit), fontsize = 18)
+
+leg = plt.legend(loc = 'lower right', fontsize = 18)
+leg.draw_frame(False)
+plt.savefig(plotname + plottype)
 
