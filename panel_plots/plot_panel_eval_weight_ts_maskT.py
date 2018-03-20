@@ -609,27 +609,39 @@ call("pdfcrop " + plotname + ".pdf " + plotname + ".pdf", shell = True)
 ## plot spread and mean
 plotname = '%s/mean_spread_change_weighted_%s_%s_%s_%s_%s_%sdiags' %(
     outdir, variable, diag, region, wu, wq, nrow)
-fig = plt.figure(figsize = (14, 10), dpi = 300)
+fig = plt.figure(figsize = (8, 6), dpi = 300)
+ax = fig.add_subplot(1,1,1)
+
 plt.axhline(y = 0.0, color = 'k' ,linewidth = 1)
 plt.tick_params(axis = 'both', which = 'major', labelsize = 15)
 xax_range = range(1, 7, 1)
-color = ['seagreen', 'firebrick', 'purple']
+color = ['k', 'seagreen', 'purple']
+lines = []
 for obs in range(0, len(obsdata)):
     plot_spread = list()
     plot_mean = list()
     for i in range(0, len(diagnum)):
         plot_spread.append(d_spread_change['%s_%s' %(obsdata[obs], diagnum[i])])
         plot_mean.append(d_mean_change['%s_%s' %(obsdata[obs], diagnum[i])])
-    plt.plot(xax_range, plot_mean, color = color[obs], linewidth = 3, label = obsdata[obs])
-    plt.plot(xax_range, plot_spread, color = color[obs], linewidth = 3,
-             linestyle = '--')
+    lines += ax.plot(xax_range, plot_mean, color = color[obs], linewidth = 3,
+                      linestyle = '-', label = obsname[obs])
+    lines += ax.plot(xax_range, plot_spread, color = color[obs],
+                      linewidth = 3, linestyle = ':')
 plt.ylim(-1.8, 1.8)
+
+leg1 = plt.legend(loc = 'lower right', fontsize = 18, frameon = False)
+
+from matplotlib.legend import Legend
+leg2 = Legend(ax, lines[0:2], ['mean', 'spread'],
+             loc = 'lower center', frameon = False)
+ax.add_artist(leg2)
 
 plt.title('Mean and spread change for region %s' %region, fontsize = 18)
 plt.xlabel('Number of diagnostics included to inform weighting', fontsize = 18)
-plt.ylabel('Change in mean (-) and spread (--) [%s]' %(unit), fontsize = 18)
+plt.ylabel('Change in mean and spread [%s]' %(unit), fontsize = 18)
 
-leg = plt.legend(loc = 'lower right', fontsize = 18)
-leg.draw_frame(False)
+#leg = plt.legend(loc = 'lower right', fontsize = 18)
+#leg1.draw_frame(False)
+#leg2.draw_frame(False)
 plt.savefig(plotname + plottype)
 
