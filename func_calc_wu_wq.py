@@ -3,7 +3,7 @@
 File Name : func_calc_wu_wq.py
 Author: Ruth Lorenz (ruth.lorenz@env.ethz.ch)
 Created: 07-03-2016
-Modified: Fri 21 Oct 2016 14:37:35 CEST
+Modified: Wed 21 Mar 2018 11:47:04 AM CET
 Purpose: calculate wu, weight accounting for dependency between models
          in multi-model ensemble, and wq, weigth accounting for
          quality compared to observations, and approximation based on weights

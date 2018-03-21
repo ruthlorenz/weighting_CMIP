@@ -3,10 +3,14 @@
 File Name : func_eval_wmm_non-wmm_error_indexI.py
 Author: Ruth Lorenz (ruth.lorenz@env.ethz.ch)
 Created: 14-03-2016
-Modified: Fri 09 Mar 2018 09:58:24 AM CET
+Modified: Wed 21 Mar 2018 11:28:03 AM CET
 Purpose: evaluate weighted multi-model mean versus non-weighted multi-model mean
 	using error index I^2 (as proposed in Baker and Taylor, 2016, JClim)
-
+Usage: needs weighted multi model mean, non-weighted multi-model mean,
+       climatology for observational data, variability in observational data
+       all either as timeseries (area average) other 3D (time, latitude, longitude),
+       if 3D latitude and longitude need to be given as well.
+       use tp == "cyc" if seasonal cycle data (values per month for obs_clim and obs_std)  
 
 '''
 import numpy as np
