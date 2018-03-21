@@ -29,10 +29,10 @@ import csv
 ###
 variable = 'tasmax'
 diag = 'CLIM'
-region = 'NAM'
+region = 'CNA'
 obsdata = ['MERRA2', 'ERAint', 'Obs']
 obsname = ['MERRA2', 'ERAint', 'OBS']
-diagnum = ['1', '2', '3', '4', '5','6']
+diagnum = ['1', '2', '3', '4', '5', '6']
 wu = '0.6'
 wq = '0.5'
 path = '/net/tropo/climphys/rlorenz/processed_CMIP5_data/Eval_Weight'
@@ -485,7 +485,58 @@ elif (len(diagnum) == 6):
               '(r) spread change = %s %s' %(d_spread_change['%s_6' %(obsdata[2])], unit)]
     fig = plt.figure(figsize = (20, 22))
     heightratios = [0.1, 1, 1, 1, 1, 1, 1]
-    
+elif (len(diagnum) == 2):
+    obs_ts_areaavg = [data_obs['%s_1' %(obsdata[0])],
+                      data_obs['%s_1' %(obsdata[1])],
+                      data_obs['%s_1' %(obsdata[2])],
+                      data_obs['%s_2' %(obsdata[0])],
+                      data_obs['%s_2' %(obsdata[1])],
+                      data_obs['%s_2' %(obsdata[2])]]
+    mm_ts_areaavg = [data_mm['%s_1' %(obsdata[0])],
+                     data_mm['%s_1' %(obsdata[1])],
+                     data_mm['%s_1' %(obsdata[2])],
+                     data_mm['%s_2' %(obsdata[0])],
+                     data_mm['%s_2' %(obsdata[1])],
+                     data_mm['%s_2' %(obsdata[2])]]
+    lower_ts_mm = [data_lowmm['%s_1' %(obsdata[0])],
+                   data_lowmm['%s_1' %(obsdata[1])],
+                   data_lowmm['%s_1' %(obsdata[2])],
+                   data_lowmm['%s_2' %(obsdata[0])],
+                   data_lowmm['%s_2' %(obsdata[1])],
+                   data_lowmm['%s_2' %(obsdata[2])]]
+    upper_ts_mm = [data_upmm['%s_1' %(obsdata[0])],
+                   data_upmm['%s_1' %(obsdata[1])],
+                   data_upmm['%s_1' %(obsdata[2])],
+                   data_upmm['%s_2' %(obsdata[0])],
+                   data_upmm['%s_2' %(obsdata[1])],
+                   data_upmm['%s_2' %(obsdata[2])]]
+    avg_ts_wmm = [data_wmm['%s_1' %(obsdata[0])],
+                  data_wmm['%s_1' %(obsdata[1])],
+                  data_wmm['%s_1' %(obsdata[2])],
+                  data_wmm['%s_2' %(obsdata[0])],
+                  data_wmm['%s_2' %(obsdata[1])],
+                  data_wmm['%s_2' %(obsdata[2])]]
+    upper_ts_wmm = [data_upwmm['%s_1' %(obsdata[0])],
+                    data_upwmm['%s_1' %(obsdata[1])],
+                    data_upwmm['%s_1' %(obsdata[2])],
+                    data_upwmm['%s_2' %(obsdata[0])],
+                    data_upwmm['%s_2' %(obsdata[1])],
+                    data_upwmm['%s_2' %(obsdata[2])]]
+    lower_ts_wmm = [data_lowwmm['%s_1' %(obsdata[0])],
+                    data_lowwmm['%s_1' %(obsdata[1])],
+                    data_lowwmm['%s_1' %(obsdata[2])],
+                    data_lowwmm['%s_2' %(obsdata[0])],
+                    data_lowwmm['%s_2' %(obsdata[1])],
+                    data_lowwmm['%s_2' %(obsdata[2])]]
+    titles = ['(a) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[0])], unit),
+              '(b) spread change = %s %s]' %(d_spread_change['%s_1' %(obsdata[1])], unit),
+              '(c) spread change = %s %s' %(d_spread_change['%s_1' %(obsdata[2])], unit),
+              '(d) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[0])], unit),
+              '(e) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[1])], unit),
+              '(f) spread change = %s %s' %(d_spread_change['%s_2' %(obsdata[2])], unit)]
+    fig = plt.figure(figsize = (17, 7))
+    heightratios = [0.1, 1, 1]
+
 ## save spread and mean change to csv
 with open('mean_change_%s_%s_%s_%s_%s.csv' %(variable, diag, region, wu, wq),
           'wb') as csv_file:
@@ -527,17 +578,19 @@ ax.axes.get_xaxis().set_visible(False)
 text1 = 'tasmaxCLIM,\n rsdsTREND'
 ax.text(0., .7, text1, rotation = 90, transform = ax.transAxes)
 
-ax = plt.subplot(gs[3, 0], frameon = False)
-ax.axes.get_yaxis().set_visible(False)
-ax.axes.get_xaxis().set_visible(False)
-text1 = 'tasmaxCLIM,\n rsdsTREND,\n prCLIM'
-ax.text(0., 0.5, text1, rotation = 90, transform = ax.transAxes)
+if (len(diagnum) > 2):
+    ax = plt.subplot(gs[3, 0], frameon = False)
+    ax.axes.get_yaxis().set_visible(False)
+    ax.axes.get_xaxis().set_visible(False)
+    text1 = 'tasmaxCLIM,\n rsdsTREND,\n prCLIM'
+    ax.text(0., 0.5, text1, rotation = 90, transform = ax.transAxes)
 
-ax = plt.subplot(gs[4, 0], frameon = False)
-ax.axes.get_yaxis().set_visible(False)
-ax.axes.get_xaxis().set_visible(False)
-text1 = 'tasmaxCLIM,\n rsdsTREND,\n prCLIM, tosSTD'
-ax.text(0., 0.6, text1, rotation = 90, transform = ax.transAxes)
+if (len(diagnum) > 3):
+    ax = plt.subplot(gs[4, 0], frameon = False)
+    ax.axes.get_yaxis().set_visible(False)
+    ax.axes.get_xaxis().set_visible(False)
+    text1 = 'tasmaxCLIM,\n rsdsTREND,\n prCLIM, tosSTD'
+    ax.text(0., 0.6, text1, rotation = 90, transform = ax.transAxes)
 
 if (len(diagnum) > 4):
     ax = plt.subplot(gs[5, 0], frameon = False)
@@ -636,12 +689,9 @@ leg2 = Legend(ax, lines[0:2], ['mean', 'spread'],
              loc = 'lower center', frameon = False)
 ax.add_artist(leg2)
 
-plt.title('Mean and spread change for region %s' %region, fontsize = 18)
+plt.title('Difference in mean and spread for region %s' %region, fontsize = 18)
 plt.xlabel('Number of diagnostics included to inform weighting', fontsize = 18)
-plt.ylabel('Change in mean and spread [%s]' %(unit), fontsize = 18)
+plt.ylabel('$\Delta$mean and $\Delta$spread [%s]' %(unit), fontsize = 18)
 
-#leg = plt.legend(loc = 'lower right', fontsize = 18)
-#leg1.draw_frame(False)
-#leg2.draw_frame(False)
 plt.savefig(plotname + plottype)
 
