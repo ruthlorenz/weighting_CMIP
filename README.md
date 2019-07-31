@@ -7,11 +7,10 @@ Method used in Knutti et al. 2017, GRL, Lorenz et al. 2017, JGR (sub).
 
 * Weight CMIP5
 * Version 0.1
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
-* Summary of set up
+* Summary of set up *
 1. Calculate diagnostics for further use (climatologies, trends etc.).
 
 2. Choose diagnostics for further use, e.g based on correlations with target
@@ -52,15 +51,6 @@ Method used in Knutti et al. 2017, GRL, Lorenz et al. 2017, JGR (sub).
 * Configuration
 * Dependencies
 CMIP5 data archive
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
