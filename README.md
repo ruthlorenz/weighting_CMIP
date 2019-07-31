@@ -48,8 +48,7 @@ Method used in Knutti et al. 2017, GRL, Lorenz et al. 2017, JGR (sub).
      if 3D latitude and longitude need to be given as well.
    
 
-* Configuration
-* Dependencies
+* Dependencies:
 CMIP5 data archive
 
 ### Who do I talk to? ###
