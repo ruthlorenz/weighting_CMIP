@@ -10,7 +10,7 @@ Method used in Knutti et al. 2017, GRL, Lorenz et al. 2017, JGR (sub).
 
 ### How do I get set up? ###
 
-* Summary of set up *
+* Summary of set up
 1. Calculate diagnostics for further use (climatologies, trends etc.).
 
 2. Choose diagnostics for further use, e.g based on correlations with target
